@@ -1,0 +1,6 @@
+syntax = "proto3";
+package azsb;
+
+message Blob {
+    map<string, bytes> packets = 1;
+}
