@@ -6,7 +6,7 @@ import (
 	"github.com/BurntSushi/toml"
 )
 
-var conf config
+var conf Config
 
 func init() {
 	if _, err := toml.DecodeFile("src/config/system.toml", &conf); err != nil {
@@ -14,20 +14,21 @@ func init() {
 	}
 }
 
-// Config method return the configuration with default toml file in dev stage
-func Toml() config {
+// Toml method return the configuration with default toml file in dev stage
+func Toml() Config {
 	return conf
 }
 
-// Load method return the configuration with the specified toml file
-func LoadToml(fname string) config {
+// LoadToml method return the configuration with the specified toml file
+func LoadToml(fname string) Config {
 	if _, err := toml.DecodeFile(fname, &conf); err != nil {
 		log.Fatalln(err)
 	}
 	return conf
 }
 
-type config struct {
+// Config is defined for global configuration
+type Config struct {
 	Storage storage
 }
 
