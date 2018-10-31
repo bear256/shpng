@@ -36,3 +36,8 @@ type storage struct {
 	Name string
 	Key  string
 }
+
+// StorageAccountInfo return Azure Storage account information which includes name & key
+func (conf Config) StorageAccountInfo() (string, string) {
+	return conf.Storage.Name, conf.Storage.Key
+}
